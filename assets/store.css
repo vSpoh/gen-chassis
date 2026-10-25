@@ -137,7 +137,7 @@ body.cart-open { overflow: hidden; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 28px; padding-bottom: 80px; }
 .card { text-decoration: none; display: block; }
 .card-media {
-  position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 8px;
+  position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 8px;
   background: var(--surface); border: 1px solid var(--line);
 }
 .card-media img { width: 100%; height: 100%; object-fit: cover; transition: opacity .35s, transform .5s; }
@@ -153,21 +153,29 @@ body.cart-open { overflow: hidden; }
 .crumbs a { text-decoration: none; }
 .crumbs a:hover { color: var(--fg); }
 .crumbs span { margin: 0 8px; }
-.product { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; padding-bottom: 80px; }
-@media (max-width: 860px) { .product { grid-template-columns: 1fr; gap: 32px; } }
+.product { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; padding-bottom: 80px; }
+@media (max-width: 860px) {
+  .product { grid-template-columns: 1fr; gap: 32px; }
+}
+.gallery { display: grid; grid-template-columns: 1fr 88px; gap: 12px; align-items: start; }
 .gallery-main {
-  aspect-ratio: 4 / 3; border-radius: 10px; overflow: hidden;
+  aspect-ratio: 9 / 16; max-height: calc(100vh - 140px); margin-left: auto; border-radius: 10px; overflow: hidden;
   background: var(--surface); border: 1px solid var(--line);
 }
 .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
-.thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+.thumbs { display: grid; gap: 12px; }
 .thumb {
-  aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden;
+  aspect-ratio: 9 / 16; border-radius: 6px; overflow: hidden;
   border: 2px solid transparent; opacity: .6; transition: opacity .2s, border-color .2s;
 }
 .thumb img { width: 100%; height: 100%; object-fit: cover; }
 .thumb:hover { opacity: 1; }
 .thumb[aria-current="true"] { border-color: var(--fg); opacity: 1; }
+@media (max-width: 860px) {
+  .gallery { grid-template-columns: 1fr; }
+  .gallery-main { max-height: 72vh; margin: 0 auto; }
+  .thumbs { grid-template-columns: repeat(2, 72px); justify-content: center; }
+}
 .info { align-self: start; position: sticky; top: 96px; }
 @media (max-width: 860px) { .info { position: static; } }
 .info h1 { font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.15; margin: 16px 0 6px; }
